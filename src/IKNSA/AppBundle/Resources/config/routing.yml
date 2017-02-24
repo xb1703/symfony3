@@ -1,0 +1,3 @@
+iknsa_app:
+    path:     /twig/tests
+    defaults: { _controller: IKNSAAppBundle:Default:index }

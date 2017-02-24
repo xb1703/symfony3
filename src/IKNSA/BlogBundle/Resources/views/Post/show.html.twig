@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Post</h1>
+    <table class="table" style="width:50%">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ post.id }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+
+                <td>
+                {% if post.extension %}
+                  <img src="{{ asset('uploads/pictures/' ~ post.getImage) }}" style="width:75px;height:75px">
+                {% else %}
+                  <i>null</i>
+                {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ post.title }}</td>
+            </tr>
+            <tr>
+                <th>Summary</th>
+                <td>{{ post.summary }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ post.content }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if post.createdAt %}{{ post.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ post.user.username }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a href="{{ path('post_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('post_edit', { 'id': post.id }) }}">Edit</a>
+        </li>
+        {% if app.user %}
+        {% if app.user == post.user %}
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+        {% endif %}
+        {% endif %}
+
+    </ul>
+    <hr></hr>
+    {% include 'IKNSABlogBundle:Comments:index.html.twig' %}
+    <hr></hr>
+    {% if is_granted("ROLE_USER") %}
+    {% include 'IKNSABlogBundle:Comments:new.html.twig' %}
+    {% endif %}
+
+{% endblock %}

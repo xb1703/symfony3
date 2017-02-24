@@ -1,0 +1,24 @@
+comments_index:
+    path:     /
+    defaults: { _controller: "IKNSABlogBundle:Comments:index" }
+    methods:  GET
+
+comments_show:
+    path:     /{id}/show
+    defaults: { _controller: "IKNSABlogBundle:Comments:show" }
+    methods:  GET
+
+comments_new:
+    path:     /new
+    defaults: { _controller: "IKNSABlogBundle:Comments:new" }
+    methods:  [GET, POST]
+
+comments_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "IKNSABlogBundle:Comments:edit" }
+    methods:  [GET, POST]
+
+comments_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "IKNSABlogBundle:Comments:delete" }
+    methods:  DELETE

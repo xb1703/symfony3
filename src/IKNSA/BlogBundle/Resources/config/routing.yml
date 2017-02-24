@@ -1,0 +1,19 @@
+iknsa_blog_post:
+    resource: "@IKNSABlogBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+
+iknsa_blog_comments:
+    resource: "@IKNSABlogBundle/Resources/config/routing/comments.yml"
+    prefix:   /comments
+
+iknsa_blog_ajax:
+    path:     /api/post
+    defaults: { _controller: IKNSABlogBundle:Post:api }
+
+iknsa_blog_homepage:
+    path:     /
+    defaults: { _controller: IKNSABlogBundle:Blog:index }
+
+iknsa_blog_list:
+    path:     /blog
+    defaults: { _controller: IKNSABlogBundle:Blog:list }
