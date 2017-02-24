@@ -129,3 +129,4 @@ You can find all the related details about configuring your apache on ubuntu ser
     ```
 # symfony3
 # symfony3
+# symfony3 : BDD dans le fichier symfony.sql
